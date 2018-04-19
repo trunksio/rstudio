@@ -4,7 +4,7 @@ check_install <- function(p) {
   }
 }
 
-
+install.packages("udunits2",configure.args='--with-udunits2-include=/usr/include/udunits2')
 check_install('feather')
 check_install('nloptr')
 check_install('base64enc')
@@ -435,3 +435,5 @@ check_install('yaml')
 check_install('zoo')
 check_install('sparklyr')
 check_install('implyr')
+check_install('graphframes')
+check_install('ggraph')

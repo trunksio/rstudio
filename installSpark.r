@@ -8,4 +8,4 @@ check_install <- function(p) {
 check_install("sparklyr")
 check_install("odbc")
 library(sparklyr)
-spark_install(version = "2.2.0")
+spark_install(version = "2.1.1", hadoop_version = "2.7")
