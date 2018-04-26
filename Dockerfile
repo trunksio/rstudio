@@ -8,12 +8,15 @@ RUN R -f /install-packages.r
 COPY requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 EXPOSE 8787
-RUN wget https://download2.rstudio.org/rstudio-server-rhel-1.1.442-x86_64.rpm
-RUN yum install -y --nogpgcheck rstudio-server-rhel-1.1.442-x86_64.rpm
 COPY ClouderaImpalaODBC-2.5.41.1029-1.el5.x86_64.rpm /ClouderaImpalaODBC-2.5.41.1029-1.el5.x86_64.rpm
 RUN yum install -y --nogpgcheck /ClouderaImpalaODBC-2.5.41.1029-1.el5.x86_64.rpm
 RUN python -m spacy download en
 COPY installSpark.r /installSpark.r
 RUN R -f /installSpark.r
-RUN rm /rstudio-server-rhel-1.1.442-x86_64.rpm /ClouderaImpalaODBC-2.5.41.1029-1.el5.x86_64.rpm
+RUN wget https://download2.rstudio.org/rstudio-server-rhel-pro-1.1.447-x86_64.rpm
+RUN wget https://drivers.rstudio.org/7C152C12/odbc-install.sh
+RUN yum install -y --nogpgcheck rstudio-server-rhel-pro-1.1.447-x86_64.rpm
+RUN chmod +x odbc-install.sh
+RUN ./odbc-install.sh
+RUN rm /rstudio-server-rhel-pro-1.1.447-x86_64.rpm /ClouderaImpalaODBC-2.5.41.1029-1.el5.x86_64.rpm /odbc-install.sh
 
