@@ -4,7 +4,7 @@ check_install <- function(p) {
   }
 }
 
-install.packages("udunits2",configure.args='--with-udunits2-include=/usr/include/udunits2')
+install.packages("udunits2",configure.args='--with-udunits2-include=/usr/include/udunits2',repo='https://cran.ma.imperial.ac.uk/')
 check_install('reticulate')
 check_install('implyr')
 check_install('feather')
